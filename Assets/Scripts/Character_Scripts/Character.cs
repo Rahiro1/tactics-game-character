@@ -57,8 +57,6 @@ public class Character
     // weapon ranks
     public List<LevelCounter> WeaponRanks { get { return characterStats.WeaponRanks; } }
 
-    
-
     public CharacterSO GetCharacterSO()
     {
         if (characterID != -1)
@@ -369,14 +367,11 @@ public class Character
         }
     }
 
-   /* TODO private IEnumerator LevelUp()
+    private List<int> Levelup()
     {
-        // CONSIDER alternate lower-RNG level up method option
-        LevelUpScreenManager levelUpScreen = GameManager.Instance.LevelUpScreenManager;
+        List<int> levelups = new();
 
         int hpIncrease, strIncrease, magIncrease, offIncrease, defIncrease, resIncrease, spdIncrease;
-
-        // increase stats
 
         hpIncrease = characterStats.HP.LevelUp();
         strIncrease = characterStats.Strength.LevelUp();
@@ -386,17 +381,17 @@ public class Character
         resIncrease = characterStats.Resistance.LevelUp();
         spdIncrease = characterStats.Speed.LevelUp();
 
-        // show level- up screen
-        yield return GameManager.Instance.StartCoroutine(levelUpScreen.OpenMenu(this, hpIncrease, strIncrease, magIncrease, offIncrease, defIncrease, resIncrease, spdIncrease));
+        levelups.Add(hpIncrease);
+        levelups.Add(strIncrease);
+        levelups.Add(magIncrease);
+        levelups.Add(offIncrease);
+        levelups.Add(defIncrease);
+        levelups.Add(resIncrease);
+        levelups.Add(spdIncrease);
 
-        yield return new WaitForSeconds(0.5f);
 
-        yield return GameManager.Instance.StartCoroutine(Utils.WaitForMouseClick());
-
-        levelUpScreen.CloseMenu();
-
-        yield break;
-    } */
+        return levelups;
+    }
 
     public void OnUnitCreated()
     {
