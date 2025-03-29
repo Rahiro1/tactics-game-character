@@ -678,14 +678,15 @@ public class Character
         EquippedHeal = heal;
     }
 
-    public void AddItemToInventory(Item item)
+    public bool AddItemToInventory(Item item)
     {
         if(CharacterInventory.Count < 8)
         {
             CharacterInventory.Add(item);
+            return true;
         } else
         {
-           // TODO GameManager.Instance.playerData.AddInventoryItem(item);
+            return false;
         }
     }
 
@@ -705,14 +706,15 @@ public class Character
         }
     }
 
-    public void AddItemToInventory(ItemSO itemSO)
+    public bool AddItemToInventory(ItemSO itemSO)
     {
         if (CharacterInventory.Count < 8)
         {
             CharacterInventory.Add(itemSO.CreateItem());
+            return true;
         } else
         {
-           // TODO GameManager.Instance.playerData.AddInventoryItem(itemSO.CreateItem()); // TODO - check if playerdata add inventory item has a limit
+            return false;
         }
     }
 
