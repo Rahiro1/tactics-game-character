@@ -6,6 +6,7 @@ public class Define
 {
     public const int WEXPMULTPLIER = 5;
     public const int BASEHITRATEOFHANDDFH = 80;
+    public const int DESTROYEDENEMYEXPMULTPLIER = 6;
 
 
     public enum WeaponType

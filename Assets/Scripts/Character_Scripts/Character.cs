@@ -367,7 +367,7 @@ public class Character
         }
     }
 
-    private List<int> Levelup()
+    private List<int> LevelUp()
     {
         List<int> levelups = new();
 
@@ -392,6 +392,9 @@ public class Character
 
         return levelups;
     }
+    // og path for function calll BattleManager -> character
+    // other functionality will be moved: BattleManager -> GM -> UIManager -> Character
+
 
     public void OnUnitCreated()
     {
@@ -419,69 +422,98 @@ public class Character
 
     // also include method for calculating the amount of experience to be gained
 
-    private IEnumerator GainExperience(int amount)
+    private List<int> GainExperience(int amount)
     {
         // TODO implement max level and possible class change at certain levels+
         if (characterStats.Level.GainExperience(amount))
         {
-            // TODO yield return GameManager.Instance.StartCoroutine(LevelUp());
+            return LevelUp();
         }
 
-        yield break;
+        return null;
     }
 
-  /* TODO public IEnumerator TriggerExperienceGain(UnitController unit)
+    public List<ExpGainInfo> TriggerBothExpGain(Character character, bool isDefeated)
     {
+        List<ExpGainInfo> expGainInfos = new();
+
+        expGainInfos.Add(TriggerExperienceGain(character, isDefeated));
+        expGainInfos.AddRange(TriggerWeaponExperienceGain(character, isDefeated));
+
+        return expGainInfos;
+    }
+
+    public ExpGainInfo TriggerExperienceGain(Character character, bool isDefeated)
+    {
+        
+
         if(unitAllignment != Define.UnitAllignment.Player)
         {
-            yield break;
+            return null;
         }
 
-        int expGainAmount = CalcultateExpFromUnit(unit);
+        ExpGainInfo expGainInfo;
+
+        int expGain = CalcultateExpFromUnit(character, isDefeated);
+        List<int> levelGains = GainExperience(expGain);
+        if (levelGains != null)
+        {
+            expGainInfo = new(Level,expGain, true);
+            expGainInfo.SetLevelGains(levelGains);
+        }
+        else
+        {
+            expGainInfo = new(Level, expGain, false);
+        }
+        
+
+        return expGainInfo;
+        
+    }
+
+    private List<ExpGainInfo> TriggerWeaponExperienceGain(Character character, bool isDefeated)
+    {
         int wexpGainAmount = 0;
-        LevelCounter pWeaponRank = null;
-        LevelCounter sWeaponRank = null;
-        LevelCounter tWeaponRank = null;
+        ExpGainInfo pExpGainInfo = null, sExpGainInfo = null, tExpGainInfo = null;
+        List<ExpGainInfo> gainList = new();
+        LevelCounter weaponRank = null;
+        bool hasLeveled = false;
+        
 
         if (EquippedWeapon != null)
         {
-            wexpGainAmount = CalcultateWExpFromUnit(unit);
+            wexpGainAmount = CalcultateWExpFromCharacter(character, isDefeated);
 
-            pWeaponRank = SelectWeaponLevelType(EquippedWeapon.weaponType);
 
-            if (pWeaponRank.GainExperience(wexpGainAmount))
-            {
-                GameManager.Instance.eventMessage.OpenMenu("Weapon level increased");
-            }
+            weaponRank = SelectWeaponLevelType(EquippedWeapon.weaponType);
+            hasLeveled = weaponRank.GainExperience(wexpGainAmount);
+            pExpGainInfo = new(weaponRank,wexpGainAmount,hasLeveled);
 
             if (EquippedWeapon.secondaryWeaponType != Define.WeaponType.none)
             {
-                sWeaponRank = SelectWeaponLevelType(EquippedWeapon.secondaryWeaponType);
-                if (sWeaponRank.GainExperience(wexpGainAmount))
-                {
-                    GameManager.Instance.eventMessage.OpenMenu("Weapon level increased");
-                }
+                weaponRank = SelectWeaponLevelType(EquippedWeapon.secondaryWeaponType);
+                hasLeveled = weaponRank.GainExperience(wexpGainAmount);
+                sExpGainInfo = new(weaponRank, wexpGainAmount, hasLeveled);
             }
             if (EquippedWeapon.tertiaryWeaponType != Define.WeaponType.none)
             {
-                tWeaponRank = SelectWeaponLevelType(EquippedWeapon.tertiaryWeaponType);
-                if (tWeaponRank.GainExperience(wexpGainAmount))
-                {
-                    GameManager.Instance.eventMessage.OpenMenu("Weapon level increased");
-                }
+                weaponRank = SelectWeaponLevelType(EquippedWeapon.tertiaryWeaponType);
+                hasLeveled = weaponRank.GainExperience(wexpGainAmount);
+                tExpGainInfo = new(weaponRank, wexpGainAmount, hasLeveled);
             }
 
-            // OpenMenu()
+            gainList.Add(pExpGainInfo);
+            gainList.Add(sExpGainInfo);
+            gainList.Add(tExpGainInfo);
+            return gainList;
         }
-
-        yield return GameManager.Instance.StartCoroutine(GameManager.Instance.expDisplay.OpenMenu(characterStats.Level, expGainAmount, pWeaponRank, wexpGainAmount, sWeaponRank, wexpGainAmount, tWeaponRank, wexpGainAmount));
-
-        
-        yield return GameManager.Instance.StartCoroutine(GainExperience(expGainAmount));
+        else
+        {
+            return null;
+        }
     }
-  */
 
-    private int CalcultateWExpFromCharacter(Character character)
+    private int CalcultateWExpFromCharacter(Character character, bool isDestroyed)
     {
         int wexpAmount = character.CalculateWeaponProficiency() - CalculateWeaponProficiency() +1;
 
@@ -496,10 +528,10 @@ public class Character
             weaponTypesNumber++;
         }
 
-        // TODO if (unit.IsDestroyed)
-        //{
-        //    wexpAmount += wexpAmount;
-        //}
+        if (isDestroyed)
+        {
+            wexpAmount += wexpAmount;
+        }
 
         wexpAmount = Mathf.CeilToInt((float)wexpAmount / weaponTypesNumber);
         wexpAmount *= Define.WEXPMULTPLIER;
@@ -533,17 +565,18 @@ public class Character
         return Mathf.FloorToInt((float)weaponexp / weaponTypesNumber);
     }
 
-   /* TODO private int CalcultateExpFromUnit(UnitController unit)
+    private int CalcultateExpFromUnit(Character character, bool isDefeated)
     {
-        if (unit.IsDestroyed)
+        // 
+        if (isDefeated)
         {
-            return (characterStats.Level.Level - unit.Character.characterStats.Level.Level + 5) * Define.DESTROYEDENEMYEXPMULTPLIER;
+            return (characterStats.Level.Level - character.characterStats.Level.Level + 5) * Define.DESTROYEDENEMYEXPMULTPLIER;
         }
         else
         {
-            return characterStats.Level.Level - unit.Character.characterStats.Level.Level + 5;
+            return characterStats.Level.Level - character.characterStats.Level.Level + 5;
         }
-    } */
+    } 
 
    /* public IEnumerator TriggerExperienceGainLevelOnly(int amount)
     {
@@ -690,6 +723,9 @@ public class Character
 
     private LevelCounter SelectWeaponLevelType(Define.WeaponType weaponType)
     {
+        // TODO
+        // add foreach here
+
         switch (weaponType)
         {
             case Define.WeaponType.Sword:
