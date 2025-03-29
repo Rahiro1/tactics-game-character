@@ -25,7 +25,7 @@ public abstract class Item
 
     public ItemSO GetItemSO()
     {
-        return null; // TPDO Database.Instance.itemDictionary[itemID];
+        return RPGDatabase.Instance.itemDictionary[itemID];
     }
 
     public bool ReduceDurability()
