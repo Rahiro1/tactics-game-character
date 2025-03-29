@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad2d84c8f04eb984591e6a9b701b9717, type: 3}
+  m_Name: TestClass
+  m_EditorClassIdentifier: 
+  classID: 0
+  className: Test
+  genericClassSprite: {fileID: 0}
+  baseHP: 10
+  baseStrength: 5
+  baseMagic: 5
+  baseOffence: 5
+  baseDefence: 5
+  baseResistance: 5
+  baseSpeed: 5
+  baseMove: 5
+  growthHP: 240
+  growthStrength: 80
+  growthMagic: 80
+  growthOffence: 80
+  growthDefence: 80
+  growthResistance: 80
+  growthSpeed: 80
+  maxHP: 20
+  maxStrength: 10
+  maxMagic: 10
+  maxOffence: 10
+  maxDefence: 10
+  maxResistance: 10
+  maxSpeed: 10
+  maxMove: 10
+  enemyGrowthHP: 0
+  enemyGrowthStrength: 0
+  enemyGrowthMagic: 0
+  enemyGrowthOffence: 0
+  enemyGrowthDefence: 0
+  enemyGrowthResistance: 0
+  enemyGrowthSpeed: 0
+  swordRank: 2
+  swordMastery: 1
+  spearRank: 0
+  spearMastery: 0
+  axeRank: 0
+  axeMastery: 0
+  bowRank: 0
+  bowMastery: 0
+  elementalRank: 0
+  elementalMastery: 0
+  decayRank: 0
+  decayMastery: 0
+  healRank: 0
+  healMastery: 0
+  armourWeaponRank: 0
+  armourWeaponMastery: 0
+  creationRank: 0
+  creationMastery: 0
+  unitType: 0
+  allowedArmourTypes: 
+  classSkillList: []

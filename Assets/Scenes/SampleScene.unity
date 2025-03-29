@@ -152,10 +152,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5845c53ae81221d4aa85ba10470a474b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterList: []
-  classList: []
+  characterList:
+  - {fileID: 11400000, guid: 38664337e0526fa4cad38216aaf2eefd, type: 2}
+  classList:
+  - {fileID: 11400000, guid: 0e10385de6b8c0b408903c9c38fad4aa, type: 2}
   skillsList: []
-  itemList: []
+  itemList:
+  - {fileID: 11400000, guid: f9dbb8a6882fa4149916ead17bdcd80d, type: 2}
 --- !u!4 &170173466
 Transform:
   m_ObjectHideFlags: 0

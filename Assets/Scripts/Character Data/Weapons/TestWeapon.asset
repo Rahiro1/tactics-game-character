@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31d7c9263a95d764ab726d90907230e8, type: 3}
+  m_Name: TestWeapon
+  m_EditorClassIdentifier: 
+  itemID: 0
+  itemName: Test
+  itemDescription: test
+  itemIcon: {fileID: 0}
+  itemBaseCost: 0
+  itemCurrentDurability: 20
+  itemMaxDurability: 20
+  IsUseable: 0
+  IsUnbreakable: 0
+  skillList: []
+  weaponType: 1
+  weaponRank: 1
+  weaponMasteryLevel: 1
+  secondaryWeaponType: 0
+  secondaryWeaponRank: 0
+  secondaryWeaponMasteryLevel: 0
+  tertiaryWeaponType: 0
+  tertiaryWeaponRank: 0
+  tertiaryWeaponMasteryLevel: 0
+  IsMagical: 0
+  power: 5
+  rending: 2
+  criticalRate: 2
+  offence: 2
+  defence: 2
+  weight: 2
+  range: 1
+  bonusStrength: 2
+  bonusMagic: 2
+  bonusSpeed: 2
+  bonusArmour: 2
+  bonusResistance: 2
+  onAttackAudio: {fileID: 0}

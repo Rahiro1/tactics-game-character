@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f548cb668a08fc4c97ae4fe5bee833c, type: 3}
+  m_Name: TestChar
+  m_EditorClassIdentifier: 
+  characterName: 
+  characterID: 0
+  baseClass: {fileID: 11400000, guid: 0e10385de6b8c0b408903c9c38fad4aa, type: 2}
+  characterSprite: {fileID: 0}
+  animatorOverrideController: {fileID: 0}
+  unitAllignment: 0
+  AIType: 0
+  SecondaryAIType: 0
+  battalionNumber: 0
+  level: 1
+  baseHP: 5
+  baseStrength: 2
+  baseMagic: 3
+  baseOffence: 2
+  baseDefence: 2
+  baseResistance: 2
+  baseSpeed: 2
+  baseMove: 2
+  growthHP: 10
+  growthStrength: 30
+  growthMagic: 10
+  growthOffence: 30
+  growthDefence: 10
+  growthResistance: 30
+  growthSpeed: 10
+  maxHP: 2
+  maxStrength: 1
+  maxMagic: 1
+  maxOffence: 1
+  maxDefence: 2
+  maxResistance: 2
+  maxSpeed: 2
+  maxMove: 0
+  equippedStartingWeapon: {fileID: 0}
+  equippedStartingArmour: {fileID: 0}
+  startingInventory: []
+  uniqueSkillList: []
+  swordRank: 0
+  swordMastery: 0
+  spearRank: 0
+  spearMastery: 0
+  axeRank: 0
+  axeMastery: 0
+  bowRank: 0
+  bowMastery: 0
+  elementalRank: 0
+  elementalMastery: 0
+  decayRank: 0
+  decayMastery: 0
+  healRank: 0
+  healMastery: 0
+  armourWeaponRank: 0
+  armourWeaponMastery: 0
+  creationRank: 0
+  creationMastery: 0
