@@ -5,10 +5,11 @@ using TMPro;
 
 public class StatDisplay : MonoBehaviour
 {
-    public TextMeshProUGUI statName, ststValue;
+    public TextMeshProUGUI statNameText, statValueText;
 
-    public void DisplayStat()
+    public void DisplayStat(string statName, int statValue)
     {
-        // paramater will be a stst variable
+        statNameText.text = statName;
+        statValueText.text = statValue.ToString();
     }
 }

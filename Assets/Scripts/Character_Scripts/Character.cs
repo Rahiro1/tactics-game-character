@@ -419,8 +419,6 @@ public class Character
         characterStats.ClassChange(GetClassSO(), newClass);
     }
 
-    // also include method for calculating the amount of experience to be gained
-
     private List<int> GainExperience(int amount)
     {
         // TODO implement max level and possible class change at certain levels+
