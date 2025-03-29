@@ -578,11 +578,6 @@ public class Character
         }
     } 
 
-   /* public IEnumerator TriggerExperienceGainLevelOnly(int amount)
-    {
-        yield return GameManager.Instance.StartCoroutine(GainExperience(amount));
-    } */
-
     public bool CanEquipWeapon(Weapon weapon)
     {
         bool canEquip = false;
@@ -590,7 +585,7 @@ public class Character
         if (weapon.weaponType == Define.WeaponType.none)
         {
             return canEquip;
-        }
+        } 
         LevelCounter rankToCheck = SelectWeaponLevelType(weapon.weaponType);
         if (rankToCheck.MasteryLevel >= weapon.weaponMasteryLevel)
         {
