@@ -61,15 +61,14 @@ public class Character
     {
         if (characterID != -1)
         {
-            //TODO return Database.Instance.CharacterDictionary[characterID];
+            return RPGDatabase.Instance.CharacterDictionary[characterID];
         }
         return null;
     }
 
     public ClassSO GetClassSO()
     {
-        return null;
-        //TODO return Database.Instance.classDictionary[classID];
+        return RPGDatabase.Instance.classDictionary[classID];
     }
 
     public List<SkillSO> GetSkillList()     // TODO find a solution for not having to make this everytime ( problem is svae/load serialisation)
@@ -87,7 +86,7 @@ public class Character
         {
             foreach (int skillID in skillIDList)
             {
-                // TODO skillList.Add(Database.Instance.skillDictionary[skillID]);
+                skillList.Add(RPGDatabase.Instance.skillDictionary[skillID]);
             }
         }
 
@@ -345,7 +344,7 @@ public class Character
         unitAllignment = unitData.allignment;
         unitType = classSO.unitType;
         AIType = unitData.AIType;
-        secondaryAIType = unitData.SecondaryAIType; // TODO sort out the relationship between data stored in unitcontroller and char = unitcontroller should contain map specific information
+        secondaryAIType = unitData.SecondaryAIType;
         battalionNumber = unitData.battalionNumber;
 
         characterStats = new CharacterStats(unitData);
@@ -654,11 +653,11 @@ public class Character
     public bool CanEquipArmour(Armour armour)
     {
         // CONSIDER - add allowedArmourList variable to character?
-        // TODO List<Define.ArmourType> allowedList = Database.Instance.classDictionary[classID].allowedArmourTypes;
-        //if (allowedList.Contains(armour.allowedArmourUser))
-        //{
-        //    return true;
-        //}
+        List<Define.ArmourType> allowedList = RPGDatabase.Instance.classDictionary[classID].allowedArmourTypes;
+        if (allowedList.Contains(armour.allowedArmourUser))
+        {
+            return true;
+        }
         return false;
     }
 

@@ -59,7 +59,7 @@ public abstract class Item
         {
             foreach (int skillID in skillIDList)
             {
-                // TODO skillList.Add(Database.Instance.skillDictionary[skillID]);
+                skillList.Add(RPGDatabase.Instance.skillDictionary[skillID]);
             }
         }
 
