@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TestClass
   m_EditorClassIdentifier: 
   classID: 0
-  className: Test
+  className: Lumberjack
   genericClassSprite: {fileID: 0}
   baseHP: 10
   baseStrength: 5

@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class StatsDisplayPanel : MonoBehaviour
 {
     [SerializeField]
     public List<StatDisplay> statDisplays;
     public CharacterSO displayCharacter;
-    public Character character; 
+    public Character character;
+    public TextMeshProUGUI charNameText, charLvlText, charClassNameText;
+
 
 
     private void Start()
@@ -21,6 +24,9 @@ public class StatsDisplayPanel : MonoBehaviour
 
     public void DisplayAllStats(Character character)
     {
+        charNameText.text = character.characterName;
+        charLvlText.text = character.Level.Level.ToString();
+        charClassNameText.text = character.GetClassSO().className;
         statDisplays[0].DisplayStat("MaxHP", character.MaxHP.GetModifiedValue());
         statDisplays[1].DisplayStat("Strength", character.Strength.GetModifiedValue());
         statDisplays[2].DisplayStat("Magic", character.Magic.GetModifiedValue());
