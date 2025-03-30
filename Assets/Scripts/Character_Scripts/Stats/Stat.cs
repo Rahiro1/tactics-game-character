@@ -35,7 +35,7 @@ public class Stat
 
     public void ChangeBaseStatValue(int amountToAdd)
     {
-        Mathf.Clamp(value += amountToAdd, 0, max);
+        value = Mathf.Clamp(value + amountToAdd, 0, max);
     }
 
     public void ChangeStatGrowth(int amountToAdd)
