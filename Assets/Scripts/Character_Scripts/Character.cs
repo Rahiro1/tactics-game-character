@@ -442,8 +442,6 @@ public class Character
 
     public ExpGainInfo TriggerExperienceGain(Character character, bool isDefeated)
     {
-        
-
         if(unitAllignment != Define.UnitAllignment.Player)
         {
             return null;
@@ -466,6 +464,27 @@ public class Character
 
         return expGainInfo;
         
+    }
+
+    public ExpGainInfo TriggerExperienceGain(int expGain)
+    {
+        if (unitAllignment != Define.UnitAllignment.Player)
+        {
+            return null;
+        }
+
+        ExpGainInfo expGainInfo;
+        List<int> levelGains = GainExperience(expGain);
+        if (levelGains != null)
+        {
+            expGainInfo = new(Level, expGain, true);
+            expGainInfo.SetLevelGains(levelGains);
+        }
+        else
+        {
+            expGainInfo = new(Level, expGain, false);
+        }
+        return expGainInfo;
     }
 
     private List<ExpGainInfo> TriggerWeaponExperienceGain(Character character, bool isDefeated)
