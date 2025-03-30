@@ -26,6 +26,9 @@ public class StatsDisplayPanel : MonoBehaviour
         charNameText.text = character.characterName;
         charLvlText.text = character.Level.Level.ToString();
         charClassNameText.text = character.GetClassSO().className;
+        charWeaponText.text = character.EquippedWeapon == null ? "N/A" : character.EquippedWeapon.ItemName;
+        charArmourText.text = character.EquippedArmour == null ? "N/A" : character.EquippedArmour.ItemName;
+        
         statDisplays[0].DisplayStat("MaxHP", character.MaxHP.GetModifiedValue());
         statDisplays[1].DisplayStat("Strength", character.Strength.GetModifiedValue());
         statDisplays[2].DisplayStat("Magic", character.Magic.GetModifiedValue());

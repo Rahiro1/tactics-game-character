@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Armour 2
   m_EditorClassIdentifier: 
   itemID: 3
-  itemName: Armour 2
+  itemName: Scale
   itemDescription: 
   itemIcon: {fileID: 0}
   itemBaseCost: 0

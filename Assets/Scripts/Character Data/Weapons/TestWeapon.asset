@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TestWeapon
   m_EditorClassIdentifier: 
   itemID: 0
-  itemName: Weapon
+  itemName: Sword
   itemDescription: test
   itemIcon: {fileID: 0}
   itemBaseCost: 0

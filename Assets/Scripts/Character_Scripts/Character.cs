@@ -674,7 +674,7 @@ public class Character
     public bool CanEquipArmour(Armour armour)
     {
         // CONSIDER - add allowedArmourList variable to character?
-        List<Define.ArmourType> allowedList = RPGDatabase.Instance.classDictionary[classID].allowedArmourTypes;
+        List<Define.ArmourType> allowedList = GetClassSO().allowedArmourTypes;
         if (allowedList.Contains(armour.allowedArmourUser))
         {
             return true;

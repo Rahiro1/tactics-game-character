@@ -64,5 +64,5 @@ MonoBehaviour:
   creationRank: 0
   creationMastery: 0
   unitType: 0
-  allowedArmourTypes: 
+  allowedArmourTypes: 00000000
   classSkillList: []
