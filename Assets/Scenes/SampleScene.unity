@@ -938,6 +938,7 @@ MonoBehaviour:
   - {fileID: 2233686122385502732}
   - {fileID: 2233686122385502731}
   - {fileID: 2233686122385502730}
+  displayCharacter: {fileID: 11400000, guid: 38664337e0526fa4cad38216aaf2eefd, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

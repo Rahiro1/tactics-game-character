@@ -45,7 +45,7 @@ MonoBehaviour:
   maxResistance: 2
   maxSpeed: 2
   maxMove: 0
-  equippedStartingWeapon: {fileID: 0}
+  equippedStartingWeapon: {fileID: 11400000, guid: f9dbb8a6882fa4149916ead17bdcd80d, type: 2}
   equippedStartingArmour: {fileID: 0}
   startingInventory: []
   uniqueSkillList: []
