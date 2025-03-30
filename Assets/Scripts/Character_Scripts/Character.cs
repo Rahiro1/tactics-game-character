@@ -6,8 +6,8 @@ using UnityEngine;
 public class Character 
 {
     public string characterName;
-    public int characterID = -1;
-    public int classID;
+    private int characterID = -1;
+    private int classID;
     public Define.UnitAllignment unitAllignment;
     public Define.AIType AIType;
     public Define.AIType secondaryAIType;
@@ -17,21 +17,11 @@ public class Character
 
     // stats
     private CharacterStats characterStats;
-    public LevelCounter Level { get { return characterStats.Level; } }
     public int currentHP;
     public int currentArmour;
 
-    // equipment
-    public Weapon EquippedWeapon { get; set; }
-    public Armour EquippedArmour { get; set; }
-    public HealingMagic EquippedHeal { get; set; }
-    public List<Item> CharacterInventory = new();
-
-    //skills
-    public List<int> skillIDList { get; set; }
-    private List<SkillSO> skillList;
-
     // basic stat getters
+    public LevelCounter Level { get { return characterStats.Level; } }
     public Stat MaxHP { get { return characterStats.HP; } }
     public Stat Strength { get { return characterStats.Strength; } }
     public Stat Magic { get { return characterStats.Magic; } }
@@ -53,6 +43,16 @@ public class Character
     public int Wield { get { return GetBaseWield() + characterStats.BonusWield.GetModifiedValue(); } }
     public int Rending { get { return GetBaseRending() + characterStats.BonusRending.GetModifiedValue(); } }
     public int Range { get { return GetBaseRange() + characterStats.BonusRange.GetModifiedValue(); } }
+
+    // equipment
+    public Weapon EquippedWeapon { get; set; }
+    public Armour EquippedArmour { get; set; }
+    public HealingMagic EquippedHeal { get; set; }
+    public List<Item> CharacterInventory = new();
+
+    //skills
+    public List<int> skillIDList { get; set; }
+    private List<SkillSO> skillList;
 
     // weapon ranks
     public List<LevelCounter> WeaponRanks { get { return characterStats.WeaponRanks; } }
@@ -416,7 +416,9 @@ public class Character
 
     public void ClassChange(ClassSO newClass)
     {
-        characterStats.ClassChange(GetClassSO(), newClass);
+        ClassSO temp = GetClassSO();
+        classID = newClass.classID;
+        characterStats.ClassChange(temp, newClass);
     }
 
     private List<int> GainExperience(int amount)

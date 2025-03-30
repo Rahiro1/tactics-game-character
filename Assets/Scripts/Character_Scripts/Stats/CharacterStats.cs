@@ -219,15 +219,34 @@ public class CharacterStats
 
     public void ClassChange(ClassSO oldClass, ClassSO newClass)
     {
+        // calculate max stat difference
+        int maxMaxHP = newClass.maxHP - oldClass.maxHP;
+        int maxStrength = newClass.maxStrength - oldClass.maxStrength;
+        int maxMagic = newClass.maxMagic - oldClass.maxMagic;
+        int maxOffence = newClass.maxOffence - oldClass.maxOffence;
+        int maxDefence = newClass.maxDefence - oldClass.maxDefence;
+        int maxResistance = newClass.maxResistance - oldClass.maxResistance;
+        int maxSpeed = newClass.maxSpeed - oldClass.maxSpeed;
+        int maxMove = newClass.maxMove - oldClass.maxMove;
+
+        HP.ChangeStatMax(maxMaxHP);
+        Strength.ChangeStatMax(maxStrength);
+        Magic.ChangeStatMax(maxMagic);
+        Offence.ChangeStatMax(maxOffence);
+        Defence.ChangeStatMax(maxDefence);
+        Resistance.ChangeStatMax(maxResistance);
+        Speed.ChangeStatMax(maxSpeed);
+        Move.ChangeStatMax(maxMove);
+
         // base stat difference
-        int hpTemp = newClass.baseHP + oldClass.baseHP;
-        int str = newClass.baseStrength + oldClass.baseStrength;
-        int mag = newClass.baseMagic + oldClass.baseMagic;
-        int off = newClass.baseOffence + oldClass.baseOffence;
-        int def = newClass.baseDefence + oldClass.baseDefence;
-        int res = newClass.baseResistance + oldClass.baseResistance;
-        int spd = newClass.baseSpeed + oldClass.baseSpeed;
-        int mov = newClass.baseMove + oldClass.baseMove;
+        int hpTemp = newClass.baseHP - oldClass.baseHP;
+        int str = newClass.baseStrength - oldClass.baseStrength;
+        int mag = newClass.baseMagic - oldClass.baseMagic;
+        int off = newClass.baseOffence - oldClass.baseOffence;
+        int def = newClass.baseDefence - oldClass.baseDefence;
+        int res = newClass.baseResistance - oldClass.baseResistance;
+        int spd = newClass.baseSpeed - oldClass.baseSpeed;
+        int mov = newClass.baseMove - oldClass.baseMove;
 
         HP.ChangeBaseStatValue(hpTemp);
         Strength.ChangeBaseStatValue(str);
@@ -239,13 +258,13 @@ public class CharacterStats
         Move.ChangeBaseStatValue(mov);
 
         // calculate growth difference
-        int hpGrowth = newClass.growthHP + oldClass.growthHP;
-        int strengthGrowth = newClass.growthStrength + oldClass.growthStrength;
-        int magicGrowth = newClass.growthMagic + oldClass.growthMagic;
-        int offenceGrowth = newClass.growthOffence + oldClass.growthOffence;
-        int defenceGrowth = newClass.growthDefence + oldClass.growthDefence;
-        int resistanceGrowth = newClass.growthResistance + oldClass.growthResistance;
-        int speedGrowth = newClass.growthSpeed + oldClass.growthSpeed;
+        int hpGrowth = newClass.growthHP - oldClass.growthHP;
+        int strengthGrowth = newClass.growthStrength - oldClass.growthStrength;
+        int magicGrowth = newClass.growthMagic - oldClass.growthMagic;
+        int offenceGrowth = newClass.growthOffence - oldClass.growthOffence;
+        int defenceGrowth = newClass.growthDefence - oldClass.growthDefence;
+        int resistanceGrowth = newClass.growthResistance - oldClass.growthResistance;
+        int speedGrowth = newClass.growthSpeed - oldClass.growthSpeed;
         int moveGrowth = 0;
 
         HP.ChangeStatGrowth(hpGrowth);
@@ -257,24 +276,7 @@ public class CharacterStats
         Speed.ChangeStatGrowth(speedGrowth);
         Move.ChangeStatGrowth(moveGrowth);
 
-        // calculate max stat difference
-        int maxMaxHP = newClass.maxHP + oldClass.maxHP;
-        int maxStrength = newClass.maxStrength + oldClass.maxStrength;
-        int maxMagic = newClass.maxMagic + oldClass.maxMagic;
-        int maxOffence = newClass.maxOffence + oldClass.maxOffence;
-        int maxDefence = newClass.maxDefence + oldClass.maxDefence;
-        int maxResistance = newClass.maxResistance + oldClass.maxResistance;
-        int maxSpeed = newClass.maxSpeed + oldClass.maxSpeed;
-        int maxMove = newClass.maxMove + oldClass.maxMove;
-
-        HP.ChangeStatMax(maxMaxHP);
-        Strength.ChangeStatMax(maxStrength);
-        Magic.ChangeStatMax(maxMagic);
-        Offence.ChangeStatMax(maxOffence);
-        Defence.ChangeStatMax(maxDefence);
-        Resistance.ChangeStatMax(maxResistance);
-        Speed.ChangeStatMax(maxSpeed);
-        Move.ChangeStatMax(maxMove);
+        
     }
 
     public void AddModifiersFromComplexEquippable(IComplexStatsGiver equip, Character character)
