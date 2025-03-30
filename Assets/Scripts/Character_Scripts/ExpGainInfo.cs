@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExpGainInfo : MonoBehaviour
+public class ExpGainInfo
 {
     public LevelCounter LevelCounter { get; private set; }
     public int ExpGained { get; private set; }
