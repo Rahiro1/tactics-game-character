@@ -9,7 +9,7 @@ public class StatsDisplayPanel : MonoBehaviour
     public List<StatDisplay> statDisplays;
     public CharacterSO displayCharacter;
     public Character character;
-    public TextMeshProUGUI charNameText, charLvlText, charClassNameText;
+    public TextMeshProUGUI charNameText, charLvlText, charClassNameText, charWeaponText, charArmourText;
 
 
 
@@ -50,6 +50,26 @@ public class StatsDisplayPanel : MonoBehaviour
     public void LevelUp()
     {
         character.TriggerExperienceGain(100);
+        DisplayAllStats(character);
+    }
+
+    public void ChangeClass(ClassSO classSO)
+    {
+        character.ClassChange(classSO);
+        DisplayAllStats(character);
+    }
+
+    public void ChangeWeapon(WeaponSO weaponSO)
+    {
+        Item item = weaponSO.CreateItem();
+        if(item is Weapon weapon){ character.EquipWeapon(weapon); }
+        DisplayAllStats(character);
+    }
+
+    public void ChangeArmour(ArmourSO armourSO)
+    {
+        Item item = armourSO.CreateItem();
+        if (item is Armour armour) { character.EquipArmour(armour); }
         DisplayAllStats(character);
     }
 }

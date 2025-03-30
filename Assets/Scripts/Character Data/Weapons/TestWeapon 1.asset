@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31d7c9263a95d764ab726d90907230e8, type: 3}
-  m_Name: TestWeapon
+  m_Name: TestWeapon 1
   m_EditorClassIdentifier: 
-  itemID: 0
-  itemName: Weapon
+  itemID: 1
+  itemName: Weapon 2
   itemDescription: test
   itemIcon: {fileID: 0}
   itemBaseCost: 0
@@ -32,16 +32,16 @@ MonoBehaviour:
   tertiaryWeaponRank: 0
   tertiaryWeaponMasteryLevel: 0
   IsMagical: 0
-  power: 5
-  rending: 5
-  criticalRate: 5
-  offence: 0
-  defence: 0
-  weight: 0
+  power: 10
+  rending: 10
+  criticalRate: 10
+  offence: 5
+  defence: 5
+  weight: 5
   range: 1
-  bonusStrength: 0
-  bonusMagic: 0
-  bonusSpeed: 0
-  bonusArmour: 0
-  bonusResistance: 0
+  bonusStrength: 5
+  bonusMagic: 5
+  bonusSpeed: 5
+  bonusArmour: 5
+  bonusResistance: 5
   onAttackAudio: {fileID: 0}

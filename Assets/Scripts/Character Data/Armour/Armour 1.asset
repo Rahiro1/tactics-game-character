@@ -9,39 +9,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31d7c9263a95d764ab726d90907230e8, type: 3}
-  m_Name: TestWeapon
+  m_Script: {fileID: 11500000, guid: f9c3a50cffe79a14e9cf7cb03b28caa7, type: 3}
+  m_Name: Armour 1
   m_EditorClassIdentifier: 
-  itemID: 0
-  itemName: Weapon
-  itemDescription: test
+  itemID: 2
+  itemName: Armour 1
+  itemDescription: 
   itemIcon: {fileID: 0}
   itemBaseCost: 0
-  itemCurrentDurability: 20
-  itemMaxDurability: 20
+  itemCurrentDurability: 0
+  itemMaxDurability: 0
   IsUseable: 0
-  IsUnbreakable: 0
+  IsUnbreakable: 1
   skillList: []
-  weaponType: 1
-  weaponRank: 1
-  weaponMasteryLevel: 1
+  allowedArmourUser: 0
+  armourValue: 5
+  armourOffence: 0
+  armourDefence: 0
+  armourComplexity: 0
+  bonusStrength: 0
+  bonusMagic: 0
+  bonusSpeed: 0
+  bonusArmour: 0
+  bonusResistance: 0
+  weaponType: 0
+  weaponRank: 0
+  weaponMasteryLevel: 0
   secondaryWeaponType: 0
   secondaryWeaponRank: 0
   secondaryWeaponMasteryLevel: 0
   tertiaryWeaponType: 0
   tertiaryWeaponRank: 0
   tertiaryWeaponMasteryLevel: 0
-  IsMagical: 0
-  power: 5
-  rending: 5
-  criticalRate: 5
-  offence: 0
-  defence: 0
-  weight: 0
-  range: 1
-  bonusStrength: 0
-  bonusMagic: 0
-  bonusSpeed: 0
-  bonusArmour: 0
-  bonusResistance: 0
-  onAttackAudio: {fileID: 0}
