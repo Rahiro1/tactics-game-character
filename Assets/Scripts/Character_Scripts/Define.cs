@@ -8,10 +8,9 @@ public class Define
     public const int BASEHITRATEOFHANDDFH = 80;
     public const int DESTROYEDENEMYEXPMULTPLIER = 6;
 
-
     public enum WeaponType
     {
-        none = 0,
+        None = 0,
         Sword = 1,
         Polearm = 2,
         Axe = 3,
@@ -57,7 +56,7 @@ public class Define
     public enum AIType // to add new AI update the AI manager, including the switch statement
     {
         Wait = 0,
-        charge = 1,
+        Charge = 1,
         AttackRange = 2,
         Thief = 3
     }

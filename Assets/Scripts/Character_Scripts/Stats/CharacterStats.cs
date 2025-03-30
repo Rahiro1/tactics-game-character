@@ -44,7 +44,7 @@ public class CharacterStats
     {
         ClassSO startingClass = character.baseClass;
 
-        Level = new LevelCounter(character.level, 1, Define.WeaponType.none);
+        Level = new LevelCounter(character.level, 1, Define.WeaponType.None);
 
         // starting stats
         int hpTemp = character.baseHP + startingClass.baseHP;
@@ -128,7 +128,7 @@ public class CharacterStats
     {
         ClassSO classSO = unitData.unitClass;
 
-        Level = new LevelCounter(unitData.level, 1, Define.WeaponType.none);
+        Level = new LevelCounter(unitData.level, 1, Define.WeaponType.None);
 
         // TODO add difficulty options and static options class, bool IsTough, bool IsSuperTough, bool IsStrong, bool IsSuperStrong, modifying the below ints
         int hPDifficultyModifier = 0;

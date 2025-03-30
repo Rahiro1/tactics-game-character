@@ -6,7 +6,7 @@ public class ClassSO : ScriptableObject
 {
     public int classID;
     public string className;
-    public Sprite genericClassSprite; // for generic enemies
+    public Sprite genericClassSprite; // for generic enemies 
     public int baseHP;
     public int baseStrength;
     public int baseMagic;

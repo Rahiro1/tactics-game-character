@@ -200,14 +200,14 @@ public class Character
 
             temp += wLvl >= 0 ? wLvl : wLvl * 2;
 
-            if (EquippedWeapon.secondaryWeaponType != Define.WeaponType.none)
+            if (EquippedWeapon.secondaryWeaponType != Define.WeaponType.None)
             {
                 wLvl = SelectWeaponLevelType(EquippedWeapon.secondaryWeaponType).Level;
                 wLvl -= EquippedWeapon.secondaryWeaponRank;
 
                 temp += wLvl >= 0 ? wLvl : wLvl * 2;
             }
-            if (EquippedWeapon.tertiaryWeaponType != Define.WeaponType.none)
+            if (EquippedWeapon.tertiaryWeaponType != Define.WeaponType.None)
             {
                 wLvl = SelectWeaponLevelType(EquippedWeapon.tertiaryWeaponType).Level;
                 wLvl -= EquippedWeapon.tertiaryWeaponRank;
@@ -507,13 +507,13 @@ public class Character
             hasLeveled = weaponRank.GainExperience(wexpGainAmount);
             pExpGainInfo = new(weaponRank,wexpGainAmount,hasLeveled);
 
-            if (EquippedWeapon.secondaryWeaponType != Define.WeaponType.none)
+            if (EquippedWeapon.secondaryWeaponType != Define.WeaponType.None)
             {
                 weaponRank = SelectWeaponLevelType(EquippedWeapon.secondaryWeaponType);
                 hasLeveled = weaponRank.GainExperience(wexpGainAmount);
                 sExpGainInfo = new(weaponRank, wexpGainAmount, hasLeveled);
             }
-            if (EquippedWeapon.tertiaryWeaponType != Define.WeaponType.none)
+            if (EquippedWeapon.tertiaryWeaponType != Define.WeaponType.None)
             {
                 weaponRank = SelectWeaponLevelType(EquippedWeapon.tertiaryWeaponType);
                 hasLeveled = weaponRank.GainExperience(wexpGainAmount);
@@ -537,11 +537,11 @@ public class Character
 
         int weaponTypesNumber = 1;
 
-        if(EquippedWeapon.secondaryWeaponType != Define.WeaponType.none)
+        if(EquippedWeapon.secondaryWeaponType != Define.WeaponType.None)
         {
             weaponTypesNumber++;
         }
-        if (EquippedWeapon.tertiaryWeaponType != Define.WeaponType.none)
+        if (EquippedWeapon.tertiaryWeaponType != Define.WeaponType.None)
         {
             weaponTypesNumber++;
         }
@@ -569,12 +569,12 @@ public class Character
 
         int weaponexp = SelectWeaponLevelType(EquippedWeapon.weaponType).Level;
 
-        if(EquippedWeapon.secondaryWeaponType != Define.WeaponType.none)
+        if(EquippedWeapon.secondaryWeaponType != Define.WeaponType.None)
         {
             weaponexp += SelectWeaponLevelType(EquippedWeapon.secondaryWeaponType).Level;
             weaponTypesNumber++;
         }
-        if (EquippedWeapon.tertiaryWeaponType != Define.WeaponType.none)
+        if (EquippedWeapon.tertiaryWeaponType != Define.WeaponType.None)
         {
             weaponexp += SelectWeaponLevelType(EquippedWeapon.tertiaryWeaponType).Level;
             weaponTypesNumber++;
@@ -600,7 +600,7 @@ public class Character
     {
         bool canEquip = false;
 
-        if (weapon.weaponType == Define.WeaponType.none)
+        if (weapon.weaponType == Define.WeaponType.None)
         {
             return canEquip;
         } 
@@ -610,7 +610,7 @@ public class Character
             canEquip = true;
         }
 
-        if(weapon.secondaryWeaponType == Define.WeaponType.none)
+        if(weapon.secondaryWeaponType == Define.WeaponType.None)
         {
             return canEquip;
         }
@@ -620,7 +620,7 @@ public class Character
             canEquip = true;
         }
 
-        if (weapon.tertiaryWeaponType == Define.WeaponType.none)
+        if (weapon.tertiaryWeaponType == Define.WeaponType.None)
         {
             return canEquip;
         }
@@ -738,32 +738,15 @@ public class Character
 
     private LevelCounter SelectWeaponLevelType(Define.WeaponType weaponType)
     {
-        // TODO
-        // add foreach here
-
-        switch (weaponType)
+        foreach(LevelCounter lC in characterStats.WeaponRanks)
         {
-            case Define.WeaponType.Sword:
-                return characterStats.SwordRank;
-            case Define.WeaponType.Polearm:
-                return characterStats.SpearRank;
-            case Define.WeaponType.Axe:
-                return characterStats.AxeRank;
-            case Define.WeaponType.Bow:
-                return characterStats.BowRank;
-            case Define.WeaponType.Elemental:
-                return characterStats.ElementalRank;
-            case Define.WeaponType.Decay:
-                return characterStats.DecayRank;
-            case Define.WeaponType.Armour:
-                return characterStats.ArmourWeaponRank;
-            case Define.WeaponType.Healing:
-                return characterStats.HealRank;
-            case Define.WeaponType.Creation:
-                return characterStats.CreationRank;
-            default:
-                return null;
+            if(lC.weaponType == weaponType)
+            {
+                return lC;
+            }
         }
+
+        return null;
     }
 
     public int DetermineSkillBonusDamage(int damage, int rending, int skillroll, out int newRending)  // maybe add status or change function
