@@ -16,7 +16,7 @@ public class Character
     public bool isSubscribedToSkills;
 
     // stats
-    private CharacterStats characterStats;
+    private readonly CharacterStats characterStats;
     public int currentHP;
     public int currentArmour;
 
@@ -51,7 +51,7 @@ public class Character
     public List<Item> CharacterInventory = new();
 
     //skills
-    public List<int> skillIDList { get; set; }
+    public List<int> SkillIDList { get; private set; }
     private List<SkillSO> skillList;
 
     // weapon ranks
@@ -77,14 +77,14 @@ public class Character
         {
             skillList = new List<SkillSO>();
         }
-        if (skillIDList == null)
+        if (SkillIDList == null)
         {
-            skillIDList = new List<int>();
+            SkillIDList = new List<int>();
         }
 
         if (skillList.Count == 0)
         {
-            foreach (int skillID in skillIDList)
+            foreach (int skillID in SkillIDList)
             {
                 skillList.Add(RPGDatabase.Instance.skillDictionary[skillID]);
             }
@@ -108,7 +108,7 @@ public class Character
 
     public List<SkillSO> GetAllskills()
     {
-        List<SkillSO> temp = new List<SkillSO>();
+        List<SkillSO> temp = new();
 
         temp.AddRange(GetSkillList());
         temp.AddRange(GetClassSO().classSkillList);
@@ -239,7 +239,7 @@ public class Character
     public void AddSkill(SkillSO skill)
     {
         GetSkillList().Add(skill);
-        skillIDList.Add(skill.skillID);
+        SkillIDList.Add(skill.skillID);
     }
 
     public void RemoveSkill(SkillSO skill)
@@ -252,9 +252,9 @@ public class Character
         {
             GetSkillList().Remove(skill);
         }
-        if (skillIDList.Contains(skill.skillID))
+        if (SkillIDList.Contains(skill.skillID))
         {
-            skillIDList.Remove(skill.skillID);
+            SkillIDList.Remove(skill.skillID);
         }
     }
     public void OnTriggerSkill(Define.SkillTriggerType skillTriggerType)
@@ -296,7 +296,7 @@ public class Character
         // equip weapon, armour and set inventory
         if (character.equippedStartingWeapon != null)
         {
-            Weapon tempWeapon = new Weapon(character.equippedStartingWeapon);
+            Weapon tempWeapon = new(character.equippedStartingWeapon);
             if (CanEquipWeapon(tempWeapon))
             {
                 EquipWeapon(tempWeapon);
@@ -307,7 +307,7 @@ public class Character
 
         if(character.equippedStartingArmour != null)
         {
-            Armour tempArmour = new Armour(character.equippedStartingArmour);
+            Armour tempArmour = new (character.equippedStartingArmour);
             if (CanEquipArmour(tempArmour))
             {
                 EquipArmour(tempArmour);
@@ -491,11 +491,11 @@ public class Character
 
     private List<ExpGainInfo> TriggerWeaponExperienceGain(Character character, bool isDefeated)
     {
-        int wexpGainAmount = 0;
-        ExpGainInfo pExpGainInfo = null, sExpGainInfo = null, tExpGainInfo = null;
+        int wexpGainAmount;
+        ExpGainInfo pExpGainInfo, sExpGainInfo = null, tExpGainInfo = null;
         List<ExpGainInfo> gainList = new();
-        LevelCounter weaponRank = null;
-        bool hasLeveled = false;
+        LevelCounter weaponRank;
+        bool hasLeveled;
         
 
         if (EquippedWeapon != null)
@@ -506,23 +506,23 @@ public class Character
             weaponRank = SelectWeaponLevelType(EquippedWeapon.weaponType);
             hasLeveled = weaponRank.GainExperience(wexpGainAmount);
             pExpGainInfo = new(weaponRank,wexpGainAmount,hasLeveled);
+            gainList.Add(pExpGainInfo);
 
             if (EquippedWeapon.secondaryWeaponType != Define.WeaponType.None)
             {
                 weaponRank = SelectWeaponLevelType(EquippedWeapon.secondaryWeaponType);
                 hasLeveled = weaponRank.GainExperience(wexpGainAmount);
                 sExpGainInfo = new(weaponRank, wexpGainAmount, hasLeveled);
+                gainList.Add(sExpGainInfo);
             }
             if (EquippedWeapon.tertiaryWeaponType != Define.WeaponType.None)
             {
                 weaponRank = SelectWeaponLevelType(EquippedWeapon.tertiaryWeaponType);
                 hasLeveled = weaponRank.GainExperience(wexpGainAmount);
                 tExpGainInfo = new(weaponRank, wexpGainAmount, hasLeveled);
+                gainList.Add(tExpGainInfo);
             }
 
-            gainList.Add(pExpGainInfo);
-            gainList.Add(sExpGainInfo);
-            gainList.Add(tExpGainInfo);
             return gainList;
         }
         else
@@ -783,7 +783,7 @@ public class Character
         this.EquippedArmour = EquippedArmour;
         this.EquippedHeal = EquippedHeal;
         this.CharacterInventory =  CharacterInventory;
-        this.skillIDList = skillIDList;
+        this.SkillIDList = skillIDList;
         this.skillList = skillList;
 }
 }

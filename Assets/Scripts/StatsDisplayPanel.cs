@@ -5,7 +5,6 @@ using TMPro;
 
 public class StatsDisplayPanel : MonoBehaviour
 {
-    [SerializeField]
     public List<StatDisplay> statDisplays;
     public CharacterSO displayCharacter;
     public Character character;

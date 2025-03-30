@@ -8,7 +8,7 @@ public class Stat
     private int value;
     private int growth;
     private int max;
-    private List<StatModifier> modifiers = new List<StatModifier>();
+    private readonly List<StatModifier> modifiers = new();
 
     public Stat(int statStartingValue,int statGrowth ,int statMax)
     {
