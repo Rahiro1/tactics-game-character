@@ -637,6 +637,7 @@ public class Character
     {
         if (CanEquipWeapon(weapon))
         {
+            UnEquipWeapon();
             EquippedWeapon = weapon;
             characterStats.AddModifiersFromEquippable(weapon);
         }
@@ -655,6 +656,7 @@ public class Character
     {
         if (CanEquipArmour(armour))
         {
+            UnEquipArmour();
             EquippedArmour = armour;
             characterStats.AddModifiersFromEquippable(armour);
         }
