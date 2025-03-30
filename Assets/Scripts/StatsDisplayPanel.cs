@@ -7,13 +7,15 @@ public class StatsDisplayPanel : MonoBehaviour
     [SerializeField]
     public List<StatDisplay> statDisplays;
     public CharacterSO displayCharacter;
+    public Character character; 
 
 
     private void Start()
     {
         if (displayCharacter != null)
         {
-            DisplayAllStats(new Character(displayCharacter));
+            character = new Character(displayCharacter);
+            DisplayAllStats(character);
         }
     }
 
@@ -37,5 +39,11 @@ public class StatsDisplayPanel : MonoBehaviour
         statDisplays[15].DisplayStat("Wield", character.Wield);
         statDisplays[16].DisplayStat("Rending", character.Rending);
         statDisplays[17].DisplayStat("Range", character.Range);
+    }
+
+    public void LevelUp()
+    {
+        character.TriggerExperienceGain(100);
+        DisplayAllStats(character);
     }
 }

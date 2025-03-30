@@ -49,8 +49,8 @@ MonoBehaviour:
   equippedStartingArmour: {fileID: 0}
   startingInventory: []
   uniqueSkillList: []
-  swordRank: 0
-  swordMastery: 0
+  swordRank: 2
+  swordMastery: 1
   spearRank: 0
   spearMastery: 0
   axeRank: 0
